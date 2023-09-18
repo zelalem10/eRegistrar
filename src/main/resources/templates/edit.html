@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit/Add Student</title>
+</head>
+<body>
+
+<h2 th:if="${student.studentId == null}">Add Student</h2>
+<h2 th:unless="${student.studentId == null}">Edit Student</h2>
+
+<form th:action="@{/students/save}" th:object="${Student}" method="post">
+    <input type="hidden" th:field="*{studentId}" />
+    <div>
+        <label>Student Number:</label>
+        <input type="text" th:field="*{studentNumber}" required />
+    </div>
+    <div>
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}" required />
+    </div>
+    <div>
+        <label>Middle Name:</label>
+        <input type="text" th:field="*{middleName}" />
+    </div>
+    <div>
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}" required />
+    </div>
+    <!-- Add other input fields as needed -->
+    <div>
+        <input type="submit" value="Save" />
+    </div>
+</form>
+
+</body>
+</html>
